@@ -7,7 +7,7 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-	
+
 };
 
 // Update the enemy's position, required method for game
@@ -17,7 +17,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 	this.x = this.x + this.speed*dt;
-	if(this.x>505){
+	if(this.x>808){
 		this.reset();
 	}
 };
@@ -33,7 +33,7 @@ Enemy.prototype.reset = function(){
 	this.speed = Math.floor(Math.random() * (400 - 100 + 1)) + 100;
 };
 
-//Enemy.prototype.checkCollisions = 
+//Enemy.prototype.checkCollisions =
 
 
 // Now write your own player class
@@ -41,28 +41,28 @@ Enemy.prototype.reset = function(){
 // a handleInput() method.
 var Player = function(){
 	this.score = 0;
-		
+
 	this.reset();
 	this.sprite = 'images/char-cat-girl.png';
 };
 
 Player.prototype.update = function(){
-	
+
 	var self = this;
 	self.win = false;
-	
+
 	self.x = 101 * self.col;
 	self.y = 83 * self.row;
-	
-	if(self.y===0){	
+
+	if(self.y===0){
 		self.score++;
 		self.win=true;
 		setTimeout(function(){
 			self.reset();
 		}, 500);
-		
+
 	}
-	
+
 };
 
 Player.prototype.render = function() {
@@ -116,8 +116,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
+		
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-

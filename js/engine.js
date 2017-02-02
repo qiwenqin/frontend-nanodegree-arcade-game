@@ -26,7 +26,7 @@ var Engine = (function(global) {
 		score = doc.getElementById('score'),
         lastTime;
 
-    canvas.width = 505;
+    canvas.width = 808;
     canvas.height = 606;
     doc.body.appendChild(canvas);
 
@@ -46,11 +46,11 @@ var Engine = (function(global) {
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
-		
+
         update(dt);
 		render();
-		
-        
+
+
 
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
@@ -86,7 +86,7 @@ var Engine = (function(global) {
         updateEntities(dt);
         checkCollisions();
     }
-	
+
 	function checkCollisions(){
 		allEnemies.forEach(function(enemy) {
             if (player.y === enemy.y && enemy.x + 83 > player.x && enemy.x < player.x + 83){
@@ -108,7 +108,7 @@ var Engine = (function(global) {
         });
         player.update();
 		score.textContent = "Your score: " + Math.floor(player.score/30);
-	
+
     }
 
     /* This function initially draws the "game level", it will then call
@@ -130,7 +130,7 @@ var Engine = (function(global) {
                 'images/grass-block.png'    // Row 2 of 2 of grass
             ],
             numRows = 6,
-            numCols = 5,
+            numCols = 8,
             row, col;
 
         /* Loop through the number of rows and columns we've defined above
@@ -151,7 +151,7 @@ var Engine = (function(global) {
         }
 
         renderEntities();
-		
+
 		Inform(player.win);
     }
 
@@ -169,15 +169,15 @@ var Engine = (function(global) {
 
         player.render();
     }
-	
+
 	function Inform(status){
 		if(status){
-			
+
 			ctx.fillStyle = "black";
 			ctx.font = "60px Impact";
 			ctx.textAlign = "center";
 			ctx.fillText("WELL DONE!", canvas.width/2, canvas.height/2);
-			
+
 		}
 	}
 
